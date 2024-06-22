@@ -30,7 +30,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: codeacademy_laravel
-      MYSQL_PASSWORD: root
+      MYSQL_PASSWORD: 8402
     ports:
       - "3307:3306"
     volumes:
@@ -44,7 +44,7 @@ services:
     environment:
       PMA_HOST: mysql
       PMA_PORT: 3306
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: 8402
     depends_on:
       - mysql
     ports:
