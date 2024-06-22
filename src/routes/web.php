@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
 use \App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
@@ -15,36 +14,9 @@ use \App\Http\Controllers\UserController;
 */
 
 
-Route::get('/request', function(Request $request){
-    $r =$request->ip();
-    dd($r);
-    return 'x';
-
-
- });
-
- Route::get('user/{user}', [UserController::class, 'show']);
+ Route::get('user/{user}', [UserController::class, 'show'])->name('user.show');
+ 
+ Route::get('users', [UserController::class, 'index'])->name('user.index');
  
     
 
-
-// Route::prefix('usuario')->group(function(){
-
-//     Route::get('', function(){
-//         return "usuarios.";
-//     })->name('usuarios');
-
-//     Route::get('/{id}', function(){
-//         return "Mostrar detalhes do usuarios!";
-//     })->name('usuarios.show');
-
-//     Route::get('/{id}/tags', function(){
-//         return "Tags do usuario!";
-//     })->name('usuarios.tags');
-
-// });
-
-
-// Route::get('/users/{parametroA}/{parametroB}', function ($parametroA, $parametroB) {
-//     return $parametroA.'-'.$parametroB;
-// });
