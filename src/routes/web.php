@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\ExploradorController;
+use App\Http\Controllers\InventarioController;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\LocalizacaoController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\UserController;
 /*
@@ -13,10 +17,19 @@ use \App\Http\Controllers\UserController;
 |
 */
 
+Route::get('explorador', [ExploradorController::class,'index']);
 
- Route::get('user/{user}', [UserController::class, 'show'])->name('user.show');
+Route::get('item', [ItemController::class,'index']);
+
+Route::get('localizacao', [LocalizacaoController::class,'index']);
+
+Route::get('inventario', [InventarioController::class,'index']);
+
+Route::post('item/postar',[ItemController::class,'store']);
+
+    Route::get('user/{user}', [UserController::class, 'show'])->name('user.show');
  
- Route::get('users', [UserController::class, 'index'])->name('user.index');
+    Route::get('users', [UserController::class, 'index'])->name('user.index');
  
     
 

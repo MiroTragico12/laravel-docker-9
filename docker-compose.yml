@@ -13,14 +13,12 @@ services:
         - UID=${UID:-1000}
         - GID=${GID:-1000}
     ports:
-      - "8000:80"
+      - "8001:80"
     volumes:
       - ./src:/var/www/html:delegated
     depends_on:
       - php
-      - redis
       - mysql
-      - mailhog
     networks:
       - laravel
 
@@ -30,9 +28,9 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: codeacademy_laravel
-      MYSQL_PASSWORD: 8402
+      MYSQL_PASSWORD: root
     ports:
-      - "3307:3306"
+      - "3308:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     networks:
@@ -44,11 +42,11 @@ services:
     environment:
       PMA_HOST: mysql
       PMA_PORT: 3306
-      MYSQL_ROOT_PASSWORD: 8402
+      MYSQL_ROOT_PASSWORD: root
     depends_on:
       - mysql
     ports:
-      - "8087:80"
+      - "8088:80"
     networks:
       - laravel
 
@@ -60,16 +58,9 @@ services:
         - UID=${UID:-1000}
         - GID=${GID:-1000}
     ports:
-      - "9000:9000"
+      - "9001:9000"
     volumes:
       - ./src:/var/www/html:delegated
-    networks:
-      - laravel
-
-  redis:
-    image: redis:alpine
-    ports:
-      - "6379:6379"
     networks:
       - laravel
 
@@ -113,13 +104,5 @@ services:
     depends_on:
       - mysql
     entrypoint: [ 'php', '/var/www/html/artisan' ]
-    networks:
-      - laravel
-
-  mailhog:
-    image: mailhog/mailhog:latest
-    ports:
-      - "1025:1025"
-      - "8025:8025"
     networks:
       - laravel
