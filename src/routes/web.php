@@ -16,6 +16,7 @@ use \App\Http\Controllers\UserController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('explorador/cadastro',[ExploradorController::class, 'create'])->name('explorador.create');
 
 Route::get('explorador', [ExploradorController::class,'index']);
 
