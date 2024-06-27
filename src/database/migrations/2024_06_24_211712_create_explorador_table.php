@@ -15,9 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->integer('idade');
-            $table->string('latitude');
-            $table->string('longitude');
+            $table->unsignedBigInteger('localizacao_id');
+            $table->unsignedBigInteger('inventario_id');
             $table->timestamps();
+
+            $table->foreignId('inventario_id')->references('id')->on('inventario')->onDelete('cascade');
+            $table->foreignId('localizacao_id')->references('id')->on('localizacao')->onDelete('cascade');
         });
     }
 

@@ -1,0 +1,1 @@
+<h1>edicao do explorador</h1>

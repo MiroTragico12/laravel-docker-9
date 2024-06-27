@@ -1,11 +1,8 @@
 <?php
 
-use App\Http\Controllers\ExploradorController;
-use App\Http\Controllers\InventarioController;
-use App\Http\Controllers\ItemController;
-use App\Http\Controllers\LocalizacaoController;
+use App\Http\Controllers\Admin\ExploradorController;
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,21 +13,14 @@ use \App\Http\Controllers\UserController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('explorador/cadastro',[ExploradorController::class, 'create'])->name('explorador.create');
+Route::put('/explorador/{id}',[ExploradorController::class,'update'])->name('explorador.update');
+Route::get('/explorador/{id}/edit',[ExploradorController::class,'edit'])->name('explorador.edit');
+Route::get('/explorador/create',[ExploradorController::class, 'create'])->name('explorador.create');
+Route::get('/explorador/{id}',[ExploradorController::class,'show'])->name('explorador.show');
+Route::post('/explorador',[ExploradorController::class,'store'])->name('explorador.store');
 
-Route::get('explorador', [ExploradorController::class,'index']);
 
-Route::get('item', [ItemController::class,'index']);
+Route::get('/explorador', [ExploradorController::class,'index'])->name('explorador.index');
 
-Route::get('localizacao', [LocalizacaoController::class,'index']);
-
-Route::get('inventario', [InventarioController::class,'index']);
-
-Route::post('item/postar',[ItemController::class,'store']);
-
-    Route::get('user/{user}', [UserController::class, 'show'])->name('user.show');
- 
-    Route::get('users', [UserController::class, 'index'])->name('user.index');
- 
     
 
