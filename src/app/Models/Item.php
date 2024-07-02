@@ -9,6 +9,7 @@ class Item extends Model
 {
     use HasFactory;
 
+    protected $table = 'itens';
     protected $fillable = [
         'nome',
         'valor',
@@ -16,4 +17,20 @@ class Item extends Model
         'localizacao_id',
         'explorador_id'
     ];
+
+    public function explorador()
+    {
+        return $this->belongsTo(Explorador::class, 'explorador_id');
+    }
+
+    public function localizacao()
+    {
+        return $this->belongsTo(Localizacao::class, 'localizacao_id');
+    }
+
+    public function inventario()
+    {
+        return $this->belongsTo(Inventario::class, 'inventario_id');
+    }
+
 }

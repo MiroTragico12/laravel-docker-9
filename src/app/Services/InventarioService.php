@@ -2,18 +2,13 @@
 
 namespace App\Services;
 
-use App\Models\Trocas;
 use App\Repositories\ExploradorRepositoryInterface;
 use App\DTO\CreateExploradorDTO;
 use App\DTO\UpdateExploradorDTO;
-use App\Models\Explorador;
-
-use Illuminate\Support\Facades\DB;
 use stdClass;
 
 class ExploradorService{
     
-
     protected $repository;
     public function __construct(ExploradorRepositoryInterface $repository){
         $this->repository = $repository;

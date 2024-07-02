@@ -9,9 +9,17 @@ class Localizacao extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'logitude',
-        'latitude',
-        'explorador_id'
-    ];
+    protected $table = 'localizacoes';
+    protected $fillable = ['latitude', 'longitude', 'explorador_id'];
+
+    public function explorador()
+    {
+        return $this->belongsTo(Explorador::class);
+    }
+
+    public function itens()
+    {
+        return $this->hasOne(Item::class);
+    }
+
 }

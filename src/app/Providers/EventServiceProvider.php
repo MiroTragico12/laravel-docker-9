@@ -15,10 +15,11 @@ class EventServiceProvider extends ServiceProvider
      * @var array<class-string, array<int, class-string>>
      */
     protected $listen = [
-        Registered::class => [
-            SendEmailVerificationNotification::class,
+        'App\Models\Explorador::class' => [
+            'App\Observers\ExploradorObserver',
         ],
     ];
+    
 
     /**
      * Register any events for your application.

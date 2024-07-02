@@ -9,12 +9,15 @@ class Inventario extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'explorador_id',
-        'item_id'
-    ];
+    protected $fillable = ['explorador_id'];
 
-    public function hasItens(){
+    public function explorador()
+    {
+        return $this->belongsTo(Explorador::class);
+    }
+
+    public function itens()
+    {
         return $this->hasMany(Item::class);
     }
 }

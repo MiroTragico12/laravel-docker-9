@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::delete('explorador/{id}/delete',[ExploradorController::class, 'destroy'])->name('explorador.destroy');
 Route::put('/explorador/{id}',[ExploradorController::class,'update'])->name('explorador.update');
 Route::get('/explorador/{id}/edit',[ExploradorController::class,'edit'])->name('explorador.edit');
 Route::get('/explorador/create',[ExploradorController::class, 'create'])->name('explorador.create');

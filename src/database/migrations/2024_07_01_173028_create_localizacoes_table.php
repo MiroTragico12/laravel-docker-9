@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inventario', function (Blueprint $table) {
+        Schema::create('localizacoes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('latitude');
+            $table->string('longitude');
             $table->unsignedBigInteger('explorador_id');
-            $table->unsignedBigInteger('item_id');
-            
 
-            $table->foreignId('explorador_id')->references('id')->on('explorador')->onDelete('cascade');
-            $table->foreignId('item_id')->references('id')->on('item')->onDelete('cascade');
-            
+            $table->foreign('explorador_id')->references('id')->on('exploradors')->onDelete('cascade');
         });
     }
 
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('inventario');
+        Schema::dropIfExists('localizacoes');
     }
 };

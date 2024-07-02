@@ -8,15 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Explorador extends Model
 {
     use HasFactory;
+    
+    protected $fillable = ['nome', 'idade'];
 
-    protected $fillable = [
-        'nome',
-        'idade',
-        'localizazao_id',
-        'inventario_id'
-    ];
-
-    public function hasLocalizacao(){
+  
+    public function historicoLocalizacoes()
+    {
         return $this->hasMany(Localizacao::class);
+    }
+
+    
+    public function inventario()
+    {
+        return $this->hasOne(Inventario::class);
     }
 }
